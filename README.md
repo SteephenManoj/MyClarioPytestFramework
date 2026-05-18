@@ -1,194 +1,169 @@
-🤖 MyClario Automation Testing Framework (Python + Playwright)
-A comprehensive end-to-end automation framework for testing the MyClario platform, covering core modules including Dashboard, Contacts, Travel, Meeting, Action Items, Agents, and On-Behalf functionalities with robust UI and backend integrations.
+# 🤖 MyClario Automation Testing Framework (Python + Playwright)
 
-📌 Overview
-This framework is designed to automate testing for the MyClario platform, focusing on:
+A comprehensive end-to-end automation framework for testing the **MyClario** platform, covering core modules including Dashboard, Contacts, Travel, Meeting, Action Items, Agents, and On-Behalf functionalities with robust UI and backend integrations.
 
-Dashboard analytics and data validation
+---
 
-Contact management operations
+## 📌 Overview
 
-Travel booking and itinerary workflows
+This framework is designed to automate testing for the **MyClario** platform, focusing on:
 
-Meeting scheduling and management
+- Dashboard analytics and data validation  
+- Contact management operations  
+- Travel booking and itinerary workflows  
+- Meeting scheduling and management  
+- Action item tracking and completion  
+- AI Agent interactions and configurations  
+- On-Behalf delegation and permissions  
 
-Action item tracking and completion
+Built with **Python**, **Playwright**, and **pytest**, the framework supports **cross-browser**, **parallel**, and **headless/headed** execution with detailed reporting and hybrid test design.
 
-AI Agent interactions and configurations
+---
 
-On-Behalf delegation and permissions
+## 🧠 Key Features
 
-Built with Python, Playwright, and pytest, the framework supports cross-browser, parallel, and headless/headed execution with detailed reporting and hybrid test design (modular + BDD-ready).
+- ✅ Page Object Model (Modular & Reusable)
+- ✅ Hybrid Framework (supports both procedural & BDD-style tests)
+- ✅ Cross-browser Testing (Chrome, Firefox, Edge, WebKit)
+- ✅ Parallel Test Execution (pytest-xdist)
+- ✅ Allure / pytest-html Reporting
+- ✅ Database Integration (PostgreSQL with psycopg2)
+- ✅ Excel-based Test Data Management (openpyxl / pandas)
+- ✅ Environment Configuration (.env / config.yaml)
+- ✅ Robust Error Handling & Screenshots on Failure
+- ✅ Smart Waits (Playwright's auto-waiting & retries)
+- ✅ CI/CD Ready (GitHub Actions / GitLab CI / Jenkins)
 
-🧠 Key Features
-✅ Page Object Model (Modular & Reusable)
+---
 
-✅ Hybrid Framework (supports both procedural & BDD-style tests)
-
-✅ Cross-browser Testing (Chrome, Firefox, Edge, WebKit)
-
-✅ Parallel Test Execution (pytest-xdist)
-
-✅ Allure / pytest-html Reporting
-
-✅ Database Integration (PostgreSQL with psycopg2)
-
-✅ Excel-based Test Data Management (openpyxl / pandas)
-
-✅ Environment Configuration (.env / config.yaml)
-
-✅ Robust Error Handling & Screenshots on Failure
-
-✅ Smart Waits (Playwright’s auto-waiting & retries)
-
-✅ CI/CD Ready (GitHub Actions / GitLab CI / Jenkins)
-
-📂 Project Structure
-text
+## 📂 Project Structure
 MyClario_AutomationTesting/
-├── pages/                           # Page Object Model classes
-│   ├── base_page.py
-│   ├── dashboard_page.py
-│   ├── contacts_page.py
-│   ├── travel_page.py
-│   ├── meeting_page.py
-│   ├── action_items_page.py
-│   ├── agents_page.py
-│   └── on_behalf_page.py
-├── tests/                           # Test modules per feature
-│   ├── test_dashboard.py
-│   ├── test_contacts.py
-│   ├── test_travel.py
-│   ├── test_meeting.py
-│   ├── test_action_items.py
-│   ├── test_agents.py
-│   └── test_on_behalf.py
-├── utilities/                       # Helpers & utilities
-│   ├── config_reader.py
-│   ├── excel_handler.py
-│   ├── db_handler.py
-│   ├── logger.py
-│   ├── screenshot_util.py
-│   └── date_utils.py
-├── fixtures/                        # pytest fixtures & setup/teardown
-│   └── conftest.py
-├── data/                            # Test data (Excel, JSON, YAML)
-│   ├── contacts_test_data.xlsx
-│   ├── travel_test_data.xlsx
-│   ├── users.json
-│   └── config.yaml
-├── reports/                         # HTML & Allure reports
-├── logs/                            # Log files
-├── requirements.txt                 # Python dependencies
-├── pytest.ini                       # pytest configuration
-├── .env                             # Environment variables
+├── pages/ # Page Object Model classes
+│ ├── base_page.py
+│ ├── dashboard_page.py
+│ ├── contacts_page.py
+│ ├── travel_page.py
+│ ├── meeting_page.py
+│ ├── action_items_page.py
+│ ├── agents_page.py
+│ └── on_behalf_page.py
+├── tests/ # Test modules per feature
+│ ├── test_dashboard.py
+│ ├── test_contacts.py
+│ ├── test_travel.py
+│ ├── test_meeting.py
+│ ├── test_action_items.py
+│ ├── test_agents.py
+│ └── test_on_behalf.py
+├── utilities/ # Helpers & utilities
+│ ├── config_reader.py
+│ ├── excel_handler.py
+│ ├── db_handler.py
+│ ├── logger.py
+│ ├── screenshot_util.py
+│ └── date_utils.py
+├── fixtures/ # pytest fixtures & setup/teardown
+│ └── conftest.py
+├── data/ # Test data (Excel, JSON, YAML)
+│ ├── contacts_test_data.xlsx
+│ ├── travel_test_data.xlsx
+│ ├── users.json
+│ └── config.yaml
+├── reports/ # HTML & Allure reports
+├── logs/ # Log files
+├── requirements.txt # Python dependencies
+├── pytest.ini # pytest configuration
+├── .env # Environment variables
 └── README.md
-⚙️ Technology Stack
-Technology	Version	Purpose
-Python	3.9+	Core Programming Language
-Playwright	1.40+	Web Automation
-pytest	7.4+	Test Execution Framework
-pytest-xdist	Latest	Parallel Execution
-allure-pytest	Latest	Advanced Reporting
-pytest-html	Latest	HTML Reports
-openpyxl / pandas	Latest	Excel File Handling
-psycopg2-binary	Latest	PostgreSQL Database Testing
-python-dotenv	Latest	Environment Variable Management
-pyyaml	Latest	YAML Config Parsing
-faker	Latest	Test Data Generation
-🧪 Test Coverage by Module
-📊 Dashboard Module
-Analytics data validation (charts, KPIs)
+---
 
-Widget loading and refresh
+## ⚙️ Technology Stack
 
-Date range filters
+| Technology          | Version     | Purpose                         |
+|---------------------|-------------|---------------------------------|
+| Python              | 3.9+        | Core Programming Language       |
+| Playwright          | 1.40+       | Web Automation                  |
+| pytest              | 7.4+        | Test Execution Framework        |
+| pytest-xdist        | Latest      | Parallel Execution              |
+| allure-pytest       | Latest      | Advanced Reporting              |
+| pytest-html         | Latest      | HTML Reports                    |
+| openpyxl / pandas   | Latest      | Excel File Handling             |
+| psycopg2-binary     | Latest      | PostgreSQL Database Testing     |
+| python-dotenv       | Latest      | Environment Variable Management |
+| pyyaml              | Latest      | YAML Config Parsing             |
+| faker               | Latest      | Test Data Generation            |
 
-Data accuracy verification
+---
 
-👥 Contacts Module
-Create, edit, delete contacts
+## 🧪 Test Coverage by Module
 
-Search and filter functionality
+### 📊 Dashboard Module
+- Analytics data validation (charts, KPIs)
+- Widget loading and refresh
+- Date range filters
+- Data accuracy verification
 
-Contact details validation
+### 👥 Contacts Module
+- Create, edit, delete contacts
+- Search and filter functionality
+- Contact details validation
+- Bulk import/export operations
+- Contact tagging and categorization
 
-Bulk import/export operations
+### ✈️ Travel Module
+- Flight / hotel / car booking flows
+- Itinerary creation and management
+- Travel preferences validation
+- Booking modifications and cancellations
+- Travel expense tracking
 
-Contact tagging and categorization
+### 📅 Meeting Module
+- Schedule, reschedule, cancel meetings
+- Calendar integration
+- Invite attendees and track RSVPs
+- Meeting reminders and notifications
+- Recurring meeting setup
 
-✈️ Travel Module
-Flight / hotel / car booking flows
+### ✅ Action Items Module
+- Create, assign, and track tasks
+- Priority and due date management
+- Status updates (pending, in-progress, completed)
+- Action item reminders
+- Completion verification
 
-Itinerary creation and management
+### 🤖 Agents Module
+- AI Agent configuration
+- Agent response validation
+- Agent permissions and access control
+- Agent activity logging
+- Integration with other modules
 
-Travel preferences validation
+### 🔄 On Behalf Module
+- Delegate permissions to users
+- Act on behalf of other users
+- Access control validation
+- Audit trail verification
+- Revoke delegation
 
-Booking modifications and cancellations
+---
 
-Travel expense tracking
+## 🚀 Getting Started
 
-📅 Meeting Module
-Schedule, reschedule, cancel meetings
+### ✅ Prerequisites
 
-Calendar integration
+- Python 3.9 or higher  
+- pip (Python package manager)  
+- Playwright browsers installed  
+- PostgreSQL (optional, for DB validation)
 
-Invite attendees and track RSVPs
+### 📦 Installation
 
-Meeting reminders and notifications
-
-Recurring meeting setup
-
-✅ Action Items Module
-Create, assign, and track tasks
-
-Priority and due date management
-
-Status updates (pending, in-progress, completed)
-
-Action item reminders
-
-Completion verification
-
-🤖 Agents Module
-AI Agent configuration
-
-Agent response validation
-
-Agent permissions and access control
-
-Agent activity logging
-
-Integration with other modules
-
-🔄 On Behalf Module
-Delegate permissions to users
-
-Act on behalf of other users
-
-Access control validation
-
-Audit trail verification
-
-Revoke delegation
-
-🚀 Getting Started
-✅ Prerequisites
-Python 3.9 or higher
-
-pip (Python package manager)
-
-Playwright browsers installed
-
-PostgreSQL (optional, for DB validation)
-
-📦 Installation
-bash
+```bash
 # Clone the repository
 git clone https://github.com/your-org/MyClario_AutomationTesting.git
 cd MyClario_AutomationTesting
 
-# Create virtual environment (optional but recommended)
+# Create virtual environment
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 
@@ -197,15 +172,14 @@ pip install -r requirements.txt
 
 # Install Playwright browsers
 playwright install
+
 🧪 Running Tests
-bash
 # Run all tests
 pytest
 
 # Run specific module tests
 pytest tests/test_contacts.py
 pytest tests/test_travel.py
-pytest tests/test_meeting.py
 
 # Run with specific browser
 pytest --browser=chromium      # or firefox, webkit
@@ -219,7 +193,6 @@ pytest -n 4
 # Run specific test marker
 pytest -m "smoke"
 pytest -m "regression"
-pytest -m "contacts"
 
 # Run with HTML report
 pytest --html=reports/report.html
@@ -250,13 +223,15 @@ Reports are auto-generated in the reports/ directory.
 ✅ Screenshots – Automatically captured on test failures
 
 🔧 Configuration Files
+
 File	Purpose
 .env	Environment variables (URLs, credentials)
 config.yaml	Framework settings (browsers, timeouts)
 pytest.ini	pytest markers, filters, default args
 requirements.txt	Python dependencies
+
 Sample .env file
-env
+
 BASE_URL=https://staging.myclario.com
 ADMIN_USERNAME=admin@myclario.com
 ADMIN_PASSWORD=secure_password
@@ -264,13 +239,14 @@ DB_HOST=localhost
 DB_NAME=myclario_db
 DB_USER=postgres
 DB_PASSWORD=postgres
-🛠️ Best Practices (Hybrid Framework)
+
+🛠️ Best Practices
 ✅ Page Object Model
 Each page/feature = one class
 
 Locators & actions inside page classes
 
-BasePage for common functions (click, wait, type, screenshot)
+BasePage for common functions
 
 ✅ Test Data Management
 Externalize data using Excel / JSON / YAML
@@ -280,11 +256,11 @@ Use data/ folder for test data files
 Generate dynamic test data using Faker library
 
 ✅ Error Handling & Debugging
-Playwright’s auto-waiting reduces flakiness
+Playwright's auto-waiting reduces flakiness
 
 Screenshots captured automatically on failures
 
-Logging via Python’s logging module
+Logging via Python's logging module
 
 ✅ Parallel & Cross-browser
 Use pytest-xdist for parallel execution
@@ -324,13 +300,3 @@ For issues or queries, contact the QA team or raise an issue in this repository.
 
 🔗 Project Status
 🚧 Active Development – Continuously adding test coverage for all modules
-
-📋 Test Execution Matrix
-Module	Smoke	Regression	Critical Scenarios
-Dashboard	✅	✅	12
-Contacts	✅	✅	25
-Travel	✅	✅	30
-Meeting	✅	✅	20
-Action Items	✅	✅	18
-Agents	✅	✅	22
-On Behalf	✅	✅	15
