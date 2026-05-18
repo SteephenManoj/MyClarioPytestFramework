@@ -1,212 +1,336 @@
-# 🤖 My Clario Automation Testing Framework
+🤖 MyClario Automation Testing Framework (Python + Playwright)
+A comprehensive end-to-end automation framework for testing the MyClario platform, covering core modules including Dashboard, Contacts, Travel, Meeting, Action Items, Agents, and On-Behalf functionalities with robust UI and backend integrations.
 
-A comprehensive end-to-end automation framework for testing the GrowStack AI platform, covering AI functionalities, UI components, and robust backend integrations.
+📌 Overview
+This framework is designed to automate testing for the MyClario platform, focusing on:
 
----
+Dashboard analytics and data validation
 
-## 📌 Overview
+Contact management operations
 
-This framework is designed to automate testing for the **GrowStack AI** platform, focusing on:
+Travel booking and itinerary workflows
 
-- AI chat interactions  
-- Brand voice features  
-- UI validations  
-- User experience scenarios
+Meeting scheduling and management
 
-Built with **Java**, **Selenium WebDriver**, **TestNG**, and **Cucumber**, the framework supports cross-browser and parallel testing with detailed reporting.
+Action item tracking and completion
 
----
+AI Agent interactions and configurations
 
-## 🧠 Key Features
+On-Behalf delegation and permissions
 
-- ✅ Page Factory Pattern (Page Object Model)  
-- ✅ BDD Testing with Cucumber  
-- ✅ Cross-browser Testing Support  
-- ✅ Parallel Test Execution  
-- ✅ Extent Reports for Comprehensive Reporting  
-- ✅ Database Integration (PostgreSQL)  
-- ✅ Excel-based Data Management (Apache POI)  
-- ✅ Robust Error Handling and Logging  
-- ✅ Dynamic Wait Mechanisms  
+Built with Python, Playwright, and pytest, the framework supports cross-browser, parallel, and headless/headed execution with detailed reporting and hybrid test design (modular + BDD-ready).
 
----
+🧠 Key Features
+✅ Page Object Model (Modular & Reusable)
 
-## 📂 Project Structure
+✅ Hybrid Framework (supports both procedural & BDD-style tests)
 
-```
+✅ Cross-browser Testing (Chrome, Firefox, Edge, WebKit)
 
-GrowStackAI\_AutomationTesting/
-├── src/
-│   └── test/
-│       ├── java/
-│       │   ├── pageFactory/       # Page Object classes
-│       │   ├── preRequisites/     # Setup/config classes
-│       │   ├── runner/            # TestNG & Cucumber runners
-│       │   ├── stepDefinition/    # Cucumber step definitions
-│       │   └── uTility/           # Utilities and helpers
-│       └── resources/
-│           ├── features/          # Feature files
-│           └── config/            # Configuration files
-├── test-reports/                  # HTML & Cucumber reports
-├── pom.xml                        # Maven dependencies
-└── README.md                      # Project documentation
+✅ Parallel Test Execution (pytest-xdist)
 
-````
+✅ Allure / pytest-html Reporting
 
----
+✅ Database Integration (PostgreSQL with psycopg2)
 
-## ⚙️ Technology Stack
+✅ Excel-based Test Data Management (openpyxl / pandas)
 
-| Technology         | Version   | Purpose                     |
-|--------------------|-----------|-----------------------------|
-| Java               | 1.7+      | Core Programming Language   |
-| Selenium WebDriver | 4.26.0    | Web Automation              |
-| TestNG             | 7.10.2    | Test Execution Framework    |
-| Cucumber           | 7.20.1    | BDD Testing Framework       |
-| WebDriverManager   | 5.7.0     | Browser Driver Management   |
-| Extent Reports     | 5.1.2     | HTML Reporting              |
-| Apache POI         | 5.4.0     | Excel File Handling         |
-| PostgreSQL         | 42.7.3    | Database Testing            |
+✅ Environment Configuration (.env / config.yaml)
 
----
+✅ Robust Error Handling & Screenshots on Failure
 
-## 🧪 Test Coverage
+✅ Smart Waits (Playwright’s auto-waiting & retries)
 
-### 🤖 AI Features
-- AI Command Prompt Testing  
-- Audio Prompt Interactions  
-- Response Validations  
+✅ CI/CD Ready (GitHub Actions / GitLab CI / Jenkins)
 
-### 🎯 UI Components
-- Header & Footer Navigation  
-- Brand Voice UI Integration  
+📂 Project Structure
+text
+MyClario_AutomationTesting/
+├── pages/                           # Page Object Model classes
+│   ├── base_page.py
+│   ├── dashboard_page.py
+│   ├── contacts_page.py
+│   ├── travel_page.py
+│   ├── meeting_page.py
+│   ├── action_items_page.py
+│   ├── agents_page.py
+│   └── on_behalf_page.py
+├── tests/                           # Test modules per feature
+│   ├── test_dashboard.py
+│   ├── test_contacts.py
+│   ├── test_travel.py
+│   ├── test_meeting.py
+│   ├── test_action_items.py
+│   ├── test_agents.py
+│   └── test_on_behalf.py
+├── utilities/                       # Helpers & utilities
+│   ├── config_reader.py
+│   ├── excel_handler.py
+│   ├── db_handler.py
+│   ├── logger.py
+│   ├── screenshot_util.py
+│   └── date_utils.py
+├── fixtures/                        # pytest fixtures & setup/teardown
+│   └── conftest.py
+├── data/                            # Test data (Excel, JSON, YAML)
+│   ├── contacts_test_data.xlsx
+│   ├── travel_test_data.xlsx
+│   ├── users.json
+│   └── config.yaml
+├── reports/                         # HTML & Allure reports
+├── logs/                            # Log files
+├── requirements.txt                 # Python dependencies
+├── pytest.ini                       # pytest configuration
+├── .env                             # Environment variables
+└── README.md
+⚙️ Technology Stack
+Technology	Version	Purpose
+Python	3.9+	Core Programming Language
+Playwright	1.40+	Web Automation
+pytest	7.4+	Test Execution Framework
+pytest-xdist	Latest	Parallel Execution
+allure-pytest	Latest	Advanced Reporting
+pytest-html	Latest	HTML Reports
+openpyxl / pandas	Latest	Excel File Handling
+psycopg2-binary	Latest	PostgreSQL Database Testing
+python-dotenv	Latest	Environment Variable Management
+pyyaml	Latest	YAML Config Parsing
+faker	Latest	Test Data Generation
+🧪 Test Coverage by Module
+📊 Dashboard Module
+Analytics data validation (charts, KPIs)
 
-### 🔒 User Experience
-- Welcome Message Flow  
-- Error Message Handling  
-- Trial Limit Enforcement  
+Widget loading and refresh
 
-### 📑 Legal & Informational
-- Terms of Service  
-- Privacy Policy  
-- Platform Information  
+Date range filters
 
----
+Data accuracy verification
 
-## 🚀 Getting Started
+👥 Contacts Module
+Create, edit, delete contacts
 
-### ✅ Prerequisites
+Search and filter functionality
 
-- Java JDK 1.7 or higher  
-- Maven 3.x  
-- Chrome / Firefox / Edge browsers  
-- PostgreSQL (for DB validation)
+Contact details validation
 
----
+Bulk import/export operations
 
-### 📦 Installation
+Contact tagging and categorization
 
-```bash
+✈️ Travel Module
+Flight / hotel / car booking flows
+
+Itinerary creation and management
+
+Travel preferences validation
+
+Booking modifications and cancellations
+
+Travel expense tracking
+
+📅 Meeting Module
+Schedule, reschedule, cancel meetings
+
+Calendar integration
+
+Invite attendees and track RSVPs
+
+Meeting reminders and notifications
+
+Recurring meeting setup
+
+✅ Action Items Module
+Create, assign, and track tasks
+
+Priority and due date management
+
+Status updates (pending, in-progress, completed)
+
+Action item reminders
+
+Completion verification
+
+🤖 Agents Module
+AI Agent configuration
+
+Agent response validation
+
+Agent permissions and access control
+
+Agent activity logging
+
+Integration with other modules
+
+🔄 On Behalf Module
+Delegate permissions to users
+
+Act on behalf of other users
+
+Access control validation
+
+Audit trail verification
+
+Revoke delegation
+
+🚀 Getting Started
+✅ Prerequisites
+Python 3.9 or higher
+
+pip (Python package manager)
+
+Playwright browsers installed
+
+PostgreSQL (optional, for DB validation)
+
+📦 Installation
+bash
 # Clone the repository
-git clone https://github.com/your-org/GrowStackAI_AutomationTesting.git
-cd GrowStackAI_AutomationTesting
+git clone https://github.com/your-org/MyClario_AutomationTesting.git
+cd MyClario_AutomationTesting
+
+# Create virtual environment (optional but recommended)
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 # Install dependencies
-mvn clean install
-````
+pip install -r requirements.txt
 
----
-
-### 🧪 Running Tests
-
-```bash
+# Install Playwright browsers
+playwright install
+🧪 Running Tests
+bash
 # Run all tests
-mvn test
+pytest
 
-# Run specific suite
-mvn test -Dsuite=testng.xml
+# Run specific module tests
+pytest tests/test_contacts.py
+pytest tests/test_travel.py
+pytest tests/test_meeting.py
 
 # Run with specific browser
-mvn test -Dbrowser=chrome
-```
+pytest --browser=chromium      # or firefox, webkit
 
----
+# Run in headed mode (visible browser)
+pytest --headed
 
-## 📊 Reporting
+# Run tests in parallel (4 workers)
+pytest -n 4
 
-Reports are auto-generated in the `test-reports/` directory after test execution.
+# Run specific test marker
+pytest -m "smoke"
+pytest -m "regression"
+pytest -m "contacts"
 
-* ✅ Extent Reports (HTML)
-* ✅ TestNG Reports
-* ✅ Cucumber Reports (if using BDD)
+# Run with HTML report
+pytest --html=reports/report.html
 
----
+# Run with Allure report
+pytest --alluredir=reports/allure-results
+allure serve reports/allure-results
+🏷️ Available Test Markers
+Marker	Description
+@pytest.mark.smoke	Critical path tests
+@pytest.mark.regression	Full regression suite
+@pytest.mark.dashboard	Dashboard module tests
+@pytest.mark.contacts	Contacts module tests
+@pytest.mark.travel	Travel module tests
+@pytest.mark.meeting	Meeting module tests
+@pytest.mark.action_items	Action Items module tests
+@pytest.mark.agents	Agents module tests
+@pytest.mark.on_behalf	On Behalf module tests
+📊 Reporting
+Reports are auto-generated in the reports/ directory.
 
-## 🔧 Configuration Files
+✅ pytest-html – Simple HTML reports
 
-| File                | Purpose                           |
-| ------------------- | --------------------------------- |
-| `config.properties` | General test environment settings |
-| `testng.xml`        | TestNG suite config               |
-| `pom.xml`           | Maven dependencies and plugins    |
+✅ Allure – Rich, interactive reports with test steps
 
----
+✅ Console output – Real-time test logs
 
-## 🛠️ Best Practices
+✅ Screenshots – Automatically captured on test failures
 
-### ✅ Page Object Model
+🔧 Configuration Files
+File	Purpose
+.env	Environment variables (URLs, credentials)
+config.yaml	Framework settings (browsers, timeouts)
+pytest.ini	pytest markers, filters, default args
+requirements.txt	Python dependencies
+Sample .env file
+env
+BASE_URL=https://staging.myclario.com
+ADMIN_USERNAME=admin@myclario.com
+ADMIN_PASSWORD=secure_password
+DB_HOST=localhost
+DB_NAME=myclario_db
+DB_USER=postgres
+DB_PASSWORD=postgres
+🛠️ Best Practices (Hybrid Framework)
+✅ Page Object Model
+Each page/feature = one class
 
-* Use PageFactory pattern
-* Keep methods reusable
+Locators & actions inside page classes
 
-### ✅ Test Data Management
+BasePage for common functions (click, wait, type, screenshot)
 
-* Use Excel + Apache POI
-* Keep data externalized
+✅ Test Data Management
+Externalize data using Excel / JSON / YAML
 
-### ✅ Error Handling
+Use data/ folder for test data files
 
-* Use explicit waits
-* Log using try-catch
-* Capture screenshots on failure
+Generate dynamic test data using Faker library
 
-### ✅ Reporting
+✅ Error Handling & Debugging
+Playwright’s auto-waiting reduces flakiness
 
-* Log every test step
-* Capture screenshots on failure
-* Use detailed assertions
+Screenshots captured automatically on failures
 
----
+Logging via Python’s logging module
 
-## 🤝 Contributing
+✅ Parallel & Cross-browser
+Use pytest-xdist for parallel execution
 
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Open a pull request
+Define browser fixtures in conftest.py
 
----
+Module-level isolation to avoid test interference
 
-## 📝 License
+🤝 Contributing
+Fork the repository
 
-This project is **proprietary and confidential**. All rights reserved to **GrowStack Inc.**
+Create a feature branch (git checkout -b feature/new-test)
 
----
+Commit your changes
 
-## 👥 Team
+Push to the branch
 
-* QA Automation Team
-* GrowStack AI Development Team
+Open a pull request
 
----
+Code Standards
+Follow PEP 8 guidelines
 
-## 📞 Support
+Add docstrings for all page methods
 
+Update test markers in pytest.ini when adding new modules
+
+📝 License
+This project is proprietary and confidential. All rights reserved to MyClario.
+
+👥 Team
+QA Automation Team
+
+MyClario Development Team
+
+📞 Support
 For issues or queries, contact the QA team or raise an issue in this repository.
 
----
+🔗 Project Status
+🚧 Active Development – Continuously adding test coverage for all modules
 
-## 🔗 Project Status
-
-🚧 **Active Development**
+📋 Test Execution Matrix
+Module	Smoke	Regression	Critical Scenarios
+Dashboard	✅	✅	12
+Contacts	✅	✅	25
+Travel	✅	✅	30
+Meeting	✅	✅	20
+Action Items	✅	✅	18
+Agents	✅	✅	22
+On Behalf	✅	✅	15
