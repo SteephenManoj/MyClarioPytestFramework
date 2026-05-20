@@ -1,4 +1,0 @@
-Dashboard verification failed: Locator.wait_for: Timeout 10000ms exceeded.
-Call log:
-  - waiting for get_by_role("heading", name="Dashboard") to be visible
-
