@@ -1,0 +1,26 @@
+# Created by pytest automatically.
+*
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environments
+venv/
+venv2/
+
+# Pytest cache
+.pytest_cache/
+
+# Reports
+reports/
+
+# Allure reports
+allure-results/
+allure-report/
+
+# Playwright traces
+traces/
+
+# IDE files
+.vscode/
+.idea/
