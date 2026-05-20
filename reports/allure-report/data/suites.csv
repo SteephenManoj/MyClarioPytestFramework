@@ -1,0 +1,5 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"Run the login flow for each row in the Excel test data.
+
+    Expected columns: `username`, `password` (case-insensitive).
+    ","7601","test_open_login","tests","2026-05-20","passed","2026-05-20","","test_mc_Login","",""
