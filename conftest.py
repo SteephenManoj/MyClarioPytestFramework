@@ -6,6 +6,7 @@ from playwright.sync_api import sync_playwright
 from pathlib import Path
 from slugify import slugify
 import allure
+from utils.excel_utils import read_excel_as_dicts
 
 @pytest.fixture(scope="session")
 def browser():
@@ -30,6 +31,11 @@ def page(browser, request):
     trace_path.parent.mkdir(exist_ok=True)
     context.tracing.stop(path=str(trace_path))
     context.close()
+
+@pytest.fixture(scope='session')
+def testdata():
+    p = Path(__file__).parent / "testdata" / "Login.xlsx"
+    return read_excel_as_dicts(p)    
 
 @pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_makereport(item, call):
