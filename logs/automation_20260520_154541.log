@@ -1,0 +1,6 @@
+2026-05-20 15:45:41 - INFO - test_logger.py - ******** Logger Test Started ********
+2026-05-20 15:45:41 - INFO - test_logger.py - This is INFO message
+2026-05-20 15:45:41 - WARNING - test_logger.py - This is WARNING message
+2026-05-20 15:45:41 - ERROR - test_logger.py - This is ERROR message
+2026-05-20 15:45:41 - CRITICAL - test_logger.py - This is CRITICAL message
+2026-05-20 15:45:41 - INFO - test_logger.py - ******** Logger Test Completed ********
