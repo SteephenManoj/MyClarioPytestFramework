@@ -27,7 +27,46 @@ def page(browser, request):
     context.tracing.stop(path=str(trace_path))
     context.close()
 
+# @pytest.fixture(scope='session')
+# def testdata():
+#     p = Path(__file__).parent / "testdata" / "TestData.xlsx"
+#     return read_excel_as_dicts(p)
+
+def pytest_addoption(parser):
+    """Register custom command-line and ini options."""
+    # Register the ini options
+    parser.addini("testdata_file", "Path to Excel test data file", default="testdata/TestData.xlsx")
+    parser.addini("testdata_sheet", "Sheet name in Excel file", default="TestData")
+    
+    # Register command-line options that override ini settings
+    parser.addoption("--testdata-file", action="store", default=None,
+                     help="Override testdata file path")
+    parser.addoption("--testdata-sheet", action="store", default=None,
+                     help="Override sheet name")  
+      
 @pytest.fixture(scope='session')
-def testdata():
-    p = Path(__file__).parent / "testdata" / "Login.xlsx"
-    return read_excel_as_dicts(p)    
+def testdata(request):
+    # 1. Try command line option
+    file_path = request.config.getoption("--testdata-file")
+    sheet_name = request.config.getoption("--testdata-sheet")
+    
+    # 2. If not provided, fall back to pytest.ini settings
+    if file_path is None:
+        file_path = request.config.getini("testdata_file")
+    if sheet_name is None:
+        sheet_name = request.config.getini("testdata_sheet")
+    
+    # 3. Final fallback (optional)
+    if file_path is None:
+        file_path = "testdata/TestData.xlsx"
+    if sheet_name is None:
+        sheet_name = "TestData"
+    
+    # Resolve absolute path relative to pytest rootdir
+    rootdir = Path(request.config.rootdir)
+    abs_path = rootdir / file_path
+    
+    if not abs_path.exists():
+        raise FileNotFoundError(f"Test data file not found: {abs_path}")
+    
+    return read_excel_as_dicts(abs_path, sheet_name=sheet_name)
