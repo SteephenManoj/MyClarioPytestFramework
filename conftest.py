@@ -50,7 +50,6 @@ def pytest_addoption(parser):
                      help="Override sheet name")  
       
 @pytest.fixture(scope='session')
-<<<<<<< HEAD
 def testdata(request):
     # 1. Try command line option
     file_path = request.config.getoption("--testdata-file")
@@ -76,7 +75,6 @@ def testdata(request):
         raise FileNotFoundError(f"Test data file not found: {abs_path}")
     
     return read_excel_as_dicts(abs_path, sheet_name=sheet_name)
-=======
 def testdata():
     p = Path(__file__).parent / "testdata" / "Login.xlsx"
     return read_excel_as_dicts(p)    
@@ -133,4 +131,3 @@ def pytest_runtest_makereport(item, call):
                 )
 
                 report.extras = extras
->>>>>>> 9c8960f67efeea779cb274eeef9d88df43ffa8b3
