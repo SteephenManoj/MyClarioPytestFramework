@@ -1,4 +1,4 @@
-from utils.logger import LogGenerator
+from src.resources.utils.logger import LogGenerator
 
 logger = LogGenerator.loggen()
 
