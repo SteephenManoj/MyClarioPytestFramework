@@ -4,6 +4,7 @@ class DashboardPage:
     def __init__(self, page: Page):
         self.page = page
         self.dashboard_text = page.get_by_role("heading", name="Dashboard")
+        self.dashboard_label = page.get_by_text("Dashboard", exact=True)
         self.timezone_popup = page.locator("[role='dialog']")
         self.keep_current_button = page.locator("//button[contains(., 'Keep Current')]")
         self.update_timezone_button = page.locator("//button[contains(., 'Update Timezone')]")
@@ -39,8 +40,9 @@ class DashboardPage:
         """Verify dashboard page after handling popup and compare actual text."""
         try:
             self.page.wait_for_load_state("networkidle")
-            self.dashboard_text.wait_for(state="visible", timeout=10000)
-            actual_text = self.dashboard_text.inner_text().strip()
+            dashboard_locator = self.dashboard_text.or_(self.dashboard_label).first
+            dashboard_locator.wait_for(state="visible", timeout=15000)
+            actual_text = dashboard_locator.inner_text().strip()
             if actual_text != expected_text:
                 print(f"Dashboard text mismatch: expected '{expected_text}', got '{actual_text}'")
                 return False

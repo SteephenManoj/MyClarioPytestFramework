@@ -1,0 +1,8 @@
+Feature: MyClario Login
+
+  Scenario: Login with valid credentials
+    Given I open the MyClario application
+    When I click the Get Started button
+    And I login with valid credentials
+    And I handle the timezone popup
+    Then I should see the dashboard page
