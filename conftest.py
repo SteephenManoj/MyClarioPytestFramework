@@ -1,5 +1,6 @@
 import pytest
 import re
+import os
 from playwright.sync_api import sync_playwright
 from pathlib import Path
 from src.resources.utils.excel_utils import get_test_data
@@ -10,10 +11,41 @@ try:
 except ImportError:
     allure = None
  
+
+def _load_env_file():
+    project_root = Path(__file__).parent
+    env_paths = [
+        project_root / "envs" / ".env",
+        project_root / ".env",
+    ]
+    env_path = next((path for path in env_paths if path.exists()), None)
+
+    if env_path is None:
+        return
+
+    for line in env_path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+
+        key, value = line.split("=", 1)
+        key = key.strip()
+        value = value.strip().strip('"').strip("'")
+
+        if key and key not in os.environ:
+            os.environ[key] = value
+
+
+_load_env_file()
+
+
 @pytest.fixture(scope="session")
 def browser():
     with sync_playwright() as playwright:
-        browser = playwright.chromium.launch(headless=False)
+        browser_name = os.getenv("MYCLARIO_BROWSER", "chromium").lower()
+        headless = os.getenv("MYCLARIO_HEADLESS", "false").lower() in ("1", "true", "yes")
+        browser_type = getattr(playwright, browser_name)
+        browser = browser_type.launch(headless=headless)
         yield browser
         browser.close()
  
@@ -86,8 +118,8 @@ def pytest_addoption(parser):
  
 @pytest.fixture(scope="session")
 def testdata(request):
-    file_path = Path(request.config.getini("testdata_file"))
-    sheet_name = request.config.getini("testdata_sheet")
+    file_path = Path(os.getenv("MYCLARIO_TESTDATA_FILE", request.config.getini("testdata_file")))
+    sheet_name = os.getenv("MYCLARIO_TESTDATA_SHEET", request.config.getini("testdata_sheet"))
  
     if not file_path.is_absolute():
         file_path = Path(request.config.rootdir) / file_path

@@ -1,0 +1,38 @@
+{
+  "name": "myclario-pytest-automation",
+  "version": "1.0.0",
+  "description": "Automation testing framework for MyClario using Python, Pytest BDD, and Playwright",
+  "main": "index.js",
+  "scripts": {
+    "test:local": "set MYCLARIO_ENV=local&& set MYCLARIO_HEADLESS=true&& ..\\venv\\Scripts\\python.exe -m pytest",
+    "test:local:headed": "set MYCLARIO_ENV=local&& set MYCLARIO_HEADLESS=false&& ..\\venv\\Scripts\\python.exe -m pytest",
+
+    "test:qa": "set MYCLARIO_ENV=qa&& set MYCLARIO_HEADLESS=true&& ..\\venv\\Scripts\\python.exe -m pytest",
+    "test:qa:headed": "set MYCLARIO_ENV=qa&& set MYCLARIO_HEADLESS=false&& ..\\venv\\Scripts\\python.exe -m pytest",
+    "test:qa:headed:report": "set MYCLARIO_ENV=qa&& set MYCLARIO_HEADLESS=false&& if exist reports\\allure-results rmdir /s /q reports\\allure-results && if exist reports\\allure-report rmdir /s /q reports\\allure-report && ..\\venv\\Scripts\\python.exe -m pytest && allure generate reports\\allure-results --clean -o reports\\allure-report",
+
+    "test:prod": "set MYCLARIO_ENV=prod&& set MYCLARIO_HEADLESS=true&& ..\\venv\\Scripts\\python.exe -m pytest",
+    "test:prod:headed": "set MYCLARIO_ENV=prod&& set MYCLARIO_HEADLESS=false&& ..\\venv\\Scripts\\python.exe -m pytest",
+
+    "test:login": "set MYCLARIO_ENV=qa&& set MYCLARIO_HEADLESS=true&& ..\\venv\\Scripts\\python.exe -m pytest src/test/tests/test_mc_Login.py",
+    "test:login:headed": "set MYCLARIO_ENV=qa&& set MYCLARIO_HEADLESS=false&& ..\\venv\\Scripts\\python.exe -m pytest src/test/tests/test_mc_Login.py",
+
+    "bdd:login": "set MYCLARIO_ENV=qa&& set MYCLARIO_HEADLESS=true&& ..\\venv\\Scripts\\python.exe -m pytest src/test/tests/test_mc_Login.py",
+    "bdd:login:headed": "set MYCLARIO_ENV=qa&& set MYCLARIO_HEADLESS=false&& ..\\venv\\Scripts\\python.exe -m pytest src/test/tests/test_mc_Login.py",
+
+    "allure:report": "allure generate reports\\allure-results --clean -o reports\\allure-report",
+    "allure:clean": "if exist reports\\allure-results rmdir /s /q reports\\allure-results && if exist reports\\allure-report rmdir /s /q reports\\allure-report",
+    "allure:open": "allure open reports\\allure-report"
+  },
+  "keywords": [
+    "pytest",
+    "playwright",
+    "pytest-bdd",
+    "automation",
+    "myclario"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {}
+}
