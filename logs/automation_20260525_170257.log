@@ -1,8 +1,0 @@
-2026-05-25 17:03:02 - INFO - test_mc_Login.py - ******** Test Case Started: test_open_login ********
-2026-05-25 17:03:02 - INFO - test_mc_Login.py - Navigating to application URL
-2026-05-25 17:03:04 - INFO - test_mc_Login.py - Clicking Get Started button
-2026-05-25 17:03:04 - INFO - test_mc_Login.py - Entering username and password
-2026-05-25 17:03:05 - INFO - test_mc_Login.py - Clicking Sign In button
-2026-05-25 17:03:05 - INFO - test_mc_Login.py - Handling timezone popup
-2026-05-25 17:03:09 - INFO - test_mc_Login.py - Verifying dashboard page
-2026-05-25 17:03:09 - INFO - test_mc_Login.py - ******** Test Case Passed: test_open_login ********
