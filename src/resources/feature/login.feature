@@ -6,3 +6,4 @@ Feature: MyClario Login
     And I login with valid credentials
     And I handle the timezone popup
     Then I should see the dashboard page
+  Scenario: Login with invalid credentials
