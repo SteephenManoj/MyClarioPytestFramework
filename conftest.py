@@ -55,20 +55,3 @@ def testdata(request):
     return get_test_data(file_path, sheet_name)
 
 
-# Login Test Data
-@pytest.fixture(scope="session")
-def login_data():
-    return get_test_data(
-        "TestData.xlsx",
-        "Login"
-    )
-
-
-# Register Test Data
-@pytest.fixture(scope="session")
-def register_data():
-    return get_test_data(
-        "TestData.xlsx",
-        "Register"
-    )
-
