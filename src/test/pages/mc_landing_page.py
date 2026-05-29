@@ -5,10 +5,14 @@ class landingpage:
     def __init__(self, page:Page):
         self.page = page
         self.get_started = page.get_by_role("button", name="Get Started")
-        self.createaccount = page.get_by_role("text", name="Create Account")
+        self.createaccount = page.get_by_role("button", name="Create Account")
         self.termsandconditions = page.get_by_role("text", name="Terms and Conditions")
         self.privacypolicy = page.get_by_role("text", name="Privacy Policy")
         self.landing_page_verification = page.get_by_role("heading", name="myClario – Your smart")
+
+    def launch_application(self): 
+        self.page.goto("https://app-qa.myclario.ai/", wait_until="networkidle" )
+
         
     def click_get_started(self):
         self.get_started.click()
