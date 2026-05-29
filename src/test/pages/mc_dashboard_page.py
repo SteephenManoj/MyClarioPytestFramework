@@ -6,11 +6,11 @@ class DashboardPage:
         self.dashboard_text = page.get_by_role("heading", name="Dashboard")
         self.dashboard_label = page.get_by_text("Dashboard", exact=True)
         self.timezone_popup = page.locator("[role='dialog']")
-        self.keep_current_button = page.locator("//button[contains(., 'Keep Current')]")
-        self.update_timezone_button = page.locator("//button[contains(., 'Update Timezone')]")
-        self.close_button = page.locator("//button[span[@class='sr-only' and text()='Close']]")  # Cross/Close button
+        self.keep_current_button = page.get_by_role("button", name="Keep Current")
+        self.update_timezone_button = page.get_by_role("button", name="Update Timezone")
+        self.close_button = page.get_by_role("button", name="Close")
 
-    def handle_timezone_popup(self, action="close"):
+    def handle_timezone_popup(self, action="keep"):
         """
         Handle the timezone mismatch modal dialog.
         :param action: "keep" → Keep Current button

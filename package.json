@@ -16,10 +16,14 @@
 
     "test:login": "set MYCLARIO_ENV=qa&& set MYCLARIO_HEADLESS=true&& ..\\venv\\Scripts\\python.exe -m pytest src/test/tests/test_mc_Login.py",
     "test:login:headed": "set MYCLARIO_ENV=qa&& set MYCLARIO_HEADLESS=false&& ..\\venv\\Scripts\\python.exe -m pytest src/test/tests/test_mc_Login.py",
+    "test:contacts": "set MYCLARIO_ENV=qa&& set MYCLARIO_HEADLESS=true&& ..\\venv\\Scripts\\python.exe -m pytest src/test/tests/test_mc_Contacts.py",
+    "test:contacts:headed": "set MYCLARIO_ENV=qa&& set MYCLARIO_HEADLESS=false&& ..\\venv\\Scripts\\python.exe -m pytest src/test/tests/test_mc_Contacts.py",
 
     "bdd:login": "set MYCLARIO_ENV=qa&& set MYCLARIO_HEADLESS=true&& ..\\venv\\Scripts\\python.exe -m pytest src/test/tests/test_mc_Login.py",
     "bdd:login:headed": "set MYCLARIO_ENV=qa&& set MYCLARIO_HEADLESS=false&& ..\\venv\\Scripts\\python.exe -m pytest src/test/tests/test_mc_Login.py",
-
+    "bdd:contacts": "set MYCLARIO_ENV=qa&& set MYCLARIO_HEADLESS=true&& ..\\venv\\Scripts\\python.exe -m pytest src/test/tests/test_mc_Contacts.py",
+    "bdd:contacts:headed": "set MYCLARIO_ENV=qa&& set MYCLARIO_HEADLESS=false&& ..\\venv\\Scripts\\python.exe -m pytest src/test/tests/test_mc_Contacts.py",
+    
     "allure:report": "allure generate reports\\allure-results --clean -o reports\\allure-report",
     "allure:clean": "if exist reports\\allure-results rmdir /s /q reports\\allure-results && if exist reports\\allure-report rmdir /s /q reports\\allure-report",
     "allure:open": "allure open reports\\allure-report"

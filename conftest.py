@@ -1,6 +1,7 @@
 import pytest
 import re
 import os
+import hashlib
 from playwright.sync_api import sync_playwright
 from pathlib import Path
 from src.resources.utils.excel_utils import get_test_data
@@ -39,6 +40,9 @@ def _load_env_file():
 _load_env_file()
 
 
+AUTH_STATE_PATH = Path("reports/auth/storage_state.json")
+
+
 @pytest.fixture(scope="session")
 def browser():
     with sync_playwright() as playwright:
@@ -57,7 +61,11 @@ def logger():
 @pytest.fixture
 def page(browser, request):
  
-    context = browser.new_context()
+    context_options = {}
+    if AUTH_STATE_PATH.exists():
+        context_options["storage_state"] = str(AUTH_STATE_PATH)
+
+    context = browser.new_context(**context_options)
  
     context.tracing.start(
         screenshots=True,
@@ -79,6 +87,11 @@ def page(browser, request):
  
 def _safe_file_name(value):
     return re.sub(r"[^A-Za-z0-9_.-]+", "_", value).strip("_")
+
+
+def _short_file_part(value, max_length=24):
+    safe_value = _safe_file_name(value)
+    return safe_value[:max_length].rstrip("_")
  
  
 def _capture_step_screenshot(request, scenario, step, step_func_args, status):
@@ -89,9 +102,10 @@ def _capture_step_screenshot(request, scenario, step, step_func_args, status):
     screenshot_dir = Path(request.config.rootpath) / "reports" / "screenshots" / status
     screenshot_dir.mkdir(parents=True, exist_ok=True)
  
-    scenario_name = _safe_file_name(scenario.name)
-    step_name = _safe_file_name(step.name)
-    screenshot_path = screenshot_dir / f"{scenario_name}_{step_name}.png"
+    name_hash = hashlib.sha1(f"{scenario.name}:{step.name}".encode("utf-8")).hexdigest()[:10]
+    scenario_name = _short_file_part(scenario.name)
+    step_name = _short_file_part(step.name)
+    screenshot_path = screenshot_dir / f"{scenario_name}_{step_name}_{name_hash}.png"
  
     page.screenshot(path=str(screenshot_path), full_page=True)
  
