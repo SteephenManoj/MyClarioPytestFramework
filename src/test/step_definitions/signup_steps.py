@@ -78,7 +78,6 @@ def verify_email_required_error(page):
     signup_page = SignupPage(page)
     expected_error = "Please fill out this field."
     actual_error = signup_page.get_email_required_error()
-    print("Actual Error:", actual_error)
     assert expected_error in actual_error
 
 # ===== SCENARIO 3: Duplicate Email Validation =====

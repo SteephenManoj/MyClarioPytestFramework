@@ -1,0 +1,7 @@
+2026-05-29 14:06:11 - INFO - test_logger.py - ******** Logger Test Started ********
+2026-05-29 14:06:11 - INFO - test_logger.py - This is INFO message
+2026-05-29 14:06:11 - WARNING - test_logger.py - This is WARNING message
+2026-05-29 14:06:11 - ERROR - test_logger.py - This is ERROR message
+2026-05-29 14:06:11 - CRITICAL - test_logger.py - This is CRITICAL message
+2026-05-29 14:06:11 - INFO - test_logger.py - ******** Logger Test Completed ********
+2026-05-29 14:06:11 - ERROR - test_logger.py - Exception occurred: division by zero

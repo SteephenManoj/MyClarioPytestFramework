@@ -11,12 +11,14 @@ Background:
   #   When User clicks on Create account to submit the registration form
   #   Then User should navigate to Verify Your Email page
 
+  @regression
   @TC_SIP_002
   Scenario: Registering a new user with incomplete and valid details
     Given User is on the MyClario registration page
     When User does not enter the valid registration details
     Then We receive an error message indicating that email is required
 
+  @sanity
   @TC_SIP_003
   Scenario: Verify duplicate email error message
     Given User is on the MyClario registration page
