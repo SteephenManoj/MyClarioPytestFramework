@@ -78,18 +78,6 @@ def verify_verify_email_page(page):
     assert verify_email_page.verify_email_page_displayed()
 
 # ===== SCENARIO 2: Registering a new user with incomplete details =====
-
-# @when("User does not enter the valid registration details")
-# def enter_incomplete_registration_details(page):
-#     signup_page = SignupPage(page)
-#     signup_page.enter_first_name("Rohitha")
-#     signup_page.enter_last_name("Koya")
-#     signup_page.click_country_dropdown()
-#     signup_page.search_country("India")
-#     signup_page.select_country_from_list("India")
-#     signup_page.enter_phone_number("9876543210")
-#     signup_page.enter_password("Test@123")
-#     signup_page.enter_confirm_password("Test@123")
 @when("User does not enter the valid registration details")
 def enter_incomplete_registration_details(page, testdata):
 
@@ -117,13 +105,6 @@ def verify_email_required_error(page):
     assert expected_error in actual_error
 
 # ===== SCENARIO 3: Duplicate Email Validation =====
-
-@when("User enters duplicate email details")
-# def enter_duplicate_email(page):
-#     signup_page = SignupPage(page)
-#     signup_page.enter_first_name("Rohitha")
-#     signup_page.enter_last_name("Koya")
-#     signup_page.enter_email("rohita.koya@bilvantis.io")
 
 @when("User enters duplicate email details")
 def enter_duplicate_email(page, testdata):
