@@ -3,13 +3,13 @@ Background:
   When User launces the MyClario application
   When User clicks on Create Account button
 
-  # @TC_SIP_001
-  # Scenario: Registering a new user with complete and valid details
-  #   Given User is on the MyClario registration page
-  #   When User enters the valid registration details
-  #   Then Create Account button should be enabled
-  #   When User clicks on Create account to submit the registration form
-  #   Then User should navigate to Verify Your Email page
+  @TC_SIP_001
+  Scenario: Registering a new user with complete and valid details
+    Given User is on the MyClario registration page
+    When User enters the valid registration details
+    Then Create Account button should be enabled
+    When User clicks on Create account to submit the registration form
+    Then User should navigate to Verify Your Email page
 
   @regression
   @TC_SIP_002

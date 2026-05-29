@@ -1,4 +1,5 @@
 # step_definitions/signup_steps.py
+from src.resources.utils.excel_utils import get_test_data_by_id
 from pytest_bdd import scenarios, given, when, then
 from conftest import page
 from src.test.pages.mc_signup_page import SignupPage
@@ -27,19 +28,37 @@ def verify_registration_page(page):
 
 # ===== SCENARIO 1: Registering a new user with complete and valid details =====
 
+# @when("User enters the valid registration details")
+# def enter_valid_registration_details(page):
+#     signup_page = SignupPage(page)
+#     signup_page.enter_first_name("Test")
+#     signup_page.enter_last_name("data2")
+#     signup_page.enter_email("testdata2@gmail.com")
+#     signup_page.click_country_dropdown()
+#     signup_page.search_country("India")
+#     signup_page.select_country_from_list("India")
+#     signup_page.enter_phone_number("9876543200")
+#     signup_page.enter_password("Test@123")
+#     signup_page.enter_confirm_password("Test@123")
 @when("User enters the valid registration details")
-def enter_valid_registration_details(page):
-    signup_page = SignupPage(page)
-    signup_page.enter_first_name("Test")
-    signup_page.enter_last_name("data2")
-    signup_page.enter_email("testdata2@gmail.com")
-    signup_page.click_country_dropdown()
-    signup_page.search_country("India")
-    signup_page.select_country_from_list("India")
-    signup_page.enter_phone_number("9876543200")
-    signup_page.enter_password("Test@123")
-    signup_page.enter_confirm_password("Test@123")
+def enter_valid_registration_details(page, testdata):
 
+    data = get_test_data_by_id(testdata, "TC_SIP_001")
+
+    signup_page = SignupPage(page)
+
+    signup_page.enter_first_name(data["FirstName"])
+    signup_page.enter_last_name(data["LastName"])
+    signup_page.enter_email(data["Email"])
+
+    signup_page.click_country_dropdown()
+    signup_page.search_country(data["Country"])
+    signup_page.select_country_from_list(data["Country"])
+
+    signup_page.enter_phone_number(str(data["Phone"]))
+
+    signup_page.enter_password(data["Password"])
+    signup_page.enter_confirm_password(data["ConfirmPassword"])
 
 @then("Create Account button should be enabled")
 def verify_create_account_enabled(page):
@@ -60,18 +79,35 @@ def verify_verify_email_page(page):
 
 # ===== SCENARIO 2: Registering a new user with incomplete details =====
 
+# @when("User does not enter the valid registration details")
+# def enter_incomplete_registration_details(page):
+#     signup_page = SignupPage(page)
+#     signup_page.enter_first_name("Rohitha")
+#     signup_page.enter_last_name("Koya")
+#     signup_page.click_country_dropdown()
+#     signup_page.search_country("India")
+#     signup_page.select_country_from_list("India")
+#     signup_page.enter_phone_number("9876543210")
+#     signup_page.enter_password("Test@123")
+#     signup_page.enter_confirm_password("Test@123")
 @when("User does not enter the valid registration details")
-def enter_incomplete_registration_details(page):
-    signup_page = SignupPage(page)
-    signup_page.enter_first_name("Rohitha")
-    signup_page.enter_last_name("Koya")
-    signup_page.click_country_dropdown()
-    signup_page.search_country("India")
-    signup_page.select_country_from_list("India")
-    signup_page.enter_phone_number("9876543210")
-    signup_page.enter_password("Test@123")
-    signup_page.enter_confirm_password("Test@123")
+def enter_incomplete_registration_details(page, testdata):
 
+    data = get_test_data_by_id(testdata, "TC_SIP_002")
+
+    signup_page = SignupPage(page)
+
+    signup_page.enter_first_name(data["FirstName"])
+    signup_page.enter_last_name(data["LastName"])
+
+    signup_page.click_country_dropdown()
+    signup_page.search_country(data["Country"])
+    signup_page.select_country_from_list(data["Country"])
+
+    signup_page.enter_phone_number(str(data["Phone"]))
+
+    signup_page.enter_password(data["Password"])
+    signup_page.enter_confirm_password(data["ConfirmPassword"])
 
 @then("We receive an error message indicating that email is required")
 def verify_email_required_error(page):
@@ -83,22 +119,38 @@ def verify_email_required_error(page):
 # ===== SCENARIO 3: Duplicate Email Validation =====
 
 @when("User enters duplicate email details")
-def enter_duplicate_email(page):
+# def enter_duplicate_email(page):
+#     signup_page = SignupPage(page)
+#     signup_page.enter_first_name("Rohitha")
+#     signup_page.enter_last_name("Koya")
+#     signup_page.enter_email("rohita.koya@bilvantis.io")
+
+@when("User enters duplicate email details")
+def enter_duplicate_email(page, testdata):
+
+    data = get_test_data_by_id(testdata, "TC_SIP_003")
+
     signup_page = SignupPage(page)
-    signup_page.enter_first_name("Rohitha")
-    signup_page.enter_last_name("Koya")
-    signup_page.enter_email("rohita.koya@bilvantis.io")
+
+    signup_page.enter_first_name(data["FirstName"])
+    signup_page.enter_last_name(data["LastName"])
+    signup_page.enter_email(data["Email"])
 
 
 @when("User enters the remaining details")
-def enter_remaining_details(page):
+def enter_remaining_details(page, testdata):
+    data = get_test_data_by_id(testdata, "TC_SIP_003")
+
     signup_page = SignupPage(page)
+
     signup_page.click_country_dropdown()
-    signup_page.search_country("India")
-    signup_page.select_country_from_list("India")
-    signup_page.enter_phone_number("9876543210")
-    signup_page.enter_password("Test@123")
-    signup_page.enter_confirm_password("Test@123")
+    signup_page.search_country(data["Country"])
+    signup_page.select_country_from_list(data["Country"])
+
+    signup_page.enter_phone_number(str(data["Phone"]))
+
+    signup_page.enter_password(data["Password"])
+    signup_page.enter_confirm_password(data["ConfirmPassword"])
 
 
 @when("User clicks on Create Account submit button")

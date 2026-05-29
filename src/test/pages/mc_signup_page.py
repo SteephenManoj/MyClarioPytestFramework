@@ -34,9 +34,6 @@ class SignupPage:
 
     def search_country(self, country): 
         self.country_search.fill(country)
-
-    # def select_country_from_list(self, country):
-    #     self.page.select_option(self.country_dropdown, label=country)
     
     def select_country_from_list(self, country):
         country_locator = self.page.locator( f"//span[@class='country-name' and text()='{country}']" ) 
