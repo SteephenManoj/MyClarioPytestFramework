@@ -26,3 +26,9 @@ def get_test_data(file_name, sheet_name='TestData'):
         path = TESTDATA_DIR / path
     return read_excel_as_dicts(path, sheet_name=sheet_name)
 
+def get_test_data_by_id(testdata, tc_id):
+    for row in testdata:
+        if row["TC_ID"] == tc_id:
+            return row
+    return None
+
